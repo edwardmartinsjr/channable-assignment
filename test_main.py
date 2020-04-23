@@ -17,11 +17,16 @@ class Test(unittest.TestCase):
 
     def test_open_patch_success(self):
         with patch("builtins.open", mock_open(read_data="data"), create=True) as m:
-            self.assertEqual(main.open_file(path_to_open), "data")
+            self.assertEqual(main.open_file(path_to_open).read(), "data")
             m.assert_called_with(path_to_open, "r")
 
     def test_open_patch_error(self):
         with self.assertRaises(SystemExit): main.open_file(path_to_open)
 
+    def test_get_create_operations_list(self):
+        create_operations_list = main.get_create_operations_list(
+            [{"id":"1"}, {"id":"2"}, {"id":"3"}],
+            [{"id":"3"}, {"id":"4"}, {"id":"5"}])
+        self.assertEqual(create_operations_list, [{"id":"4"}, {"id":"5"}])
 
 unittest.main()
