@@ -29,4 +29,9 @@ class Test(unittest.TestCase):
             [{"id":"3"}, {"id":"4"}, {"id":"5"}])
         self.assertEqual(create_operations_list, [{"id":"4"}, {"id":"5"}])
 
+    def test_get_create_operations_list_with_empty_input(self):
+        create_operations_list = main.get_create_operations_list()
+        self.assertEqual(create_operations_list, [])
+
+
 unittest.main()

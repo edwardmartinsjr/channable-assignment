@@ -29,7 +29,7 @@ Create: the product wasn’t imported from the eCommerce system yesterday (befor
 but it was imported today (after). This means we have to send a create operation 
 to the eCommerce platform
 """
-def get_create_operations_list(before, after):
+def get_create_operations_list(before = [], after = []):
     row_before = [row_before["id"] for row_before in before]
     row_after = [
         dict(row_after)
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # transform csv to dictionary
     before_dict = csv.DictReader(before_csv, delimiter=",")
     after_dict = csv.DictReader(after_csv, delimiter=",")
-    
+
     # Get create operations list
     create_operations_list = get_create_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
