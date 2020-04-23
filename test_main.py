@@ -33,5 +33,15 @@ class Test(unittest.TestCase):
         create_operations_list = main.get_create_operations_list()
         self.assertEqual(create_operations_list, [])
 
+    def test_get_delete_operations_list(self):
+        delete_operations_list = main.get_delete_operations_list(
+            [{"id":"1"}, {"id":"2"}, {"id":"3"}],
+            [{"id":"3"}, {"id":"4"}, {"id":"5"}])
+        self.assertEqual(delete_operations_list, [{"id":"1"}, {"id":"2"}])
+
+    def test_get_delete_operations_list_with_empty_input(self):
+        delete_operations_list = main.get_delete_operations_list()
+        self.assertEqual(delete_operations_list, [])
+
 
 unittest.main()

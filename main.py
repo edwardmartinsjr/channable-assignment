@@ -37,6 +37,18 @@ def get_create_operations_list(before = [], after = []):
         if row_after["id"] not in row_before]    
     return row_after
 
+"""
+Delete: the product was imported yesterday (before), but was not imported today (after). 
+This means we have to send a delete operation to the advertisement channel.
+"""
+def get_delete_operations_list(before = [], after = []):
+    row_after = [row_after["id"] for row_after in after]
+    row_before = [
+        dict(row_before)
+        for row_before in before
+        if row_before["id"] not in row_after]    
+    return row_before
+
 
 if __name__ == "__main__":
 
@@ -55,6 +67,11 @@ if __name__ == "__main__":
     create_operations_list = get_create_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
     print(f"Create operations (type: List of dictionaries):\n{create_operations_list}")
+
+    # Get delete operations list
+    delete_operations_list = get_delete_operations_list(before_dict, after_dict)
+    # TODO: Implement channel integration
+    print(f"Delete operations (type: Set of ids):\n{delete_operations_list}")
 
 
     before_csv.close()
