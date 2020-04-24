@@ -68,6 +68,10 @@ if __name__ == "__main__":
     # TODO: Implement channel integration
     print(f"Create operations (type: List of dictionaries):\n{create_operations_list}")
 
+    # Set file objects position to the beginning for the next data retrieval.
+    before_csv.seek(0)
+    after_csv.seek(0)
+
     # Get delete operations list
     delete_operations_list = get_delete_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
