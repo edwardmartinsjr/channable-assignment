@@ -53,6 +53,11 @@ def get_delete_operations_list(before = [], after = []):
             row_before.append(d)
     return row_before
 
+"""
+Update: the product was imported yesterday (before) and is also imported today (after), however, one
+of the values for the products has changed (e.g. price of the product). This means we
+have to send an update operation to the advertisement channel
+"""
 def get_update_operations_list(before = [], after = []):
     # Get list ids
     before_copy = []
