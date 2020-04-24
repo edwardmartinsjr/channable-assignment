@@ -26,5 +26,5 @@ python test_main.py -v
 
 6. Run:
 ```
-python main.py path_to_before.csv path_to_after.csv
+python main.py product_inventory_before.csv product_inventory_after.csv
 ```
