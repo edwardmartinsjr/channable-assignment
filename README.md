@@ -1,5 +1,6 @@
-
 # Channable Assignment
+
+[![CircleCI](https://circleci.com/gh/edwardmartinsjr/channable-assignment/tree/master.svg?style=shield)](https://circleci.com/gh/edwardmartinsjr/channable-assignment/tree/master)
 
 1. This program is a single .py file.
 
