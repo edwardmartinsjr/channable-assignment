@@ -1,7 +1,7 @@
 
 # Channable Assignment
 
-1. This program is a single .py file
+1. This program is a single .py file.
 
 2. This program is written in python 3.7, using only python’s built-in libraries.
 
@@ -17,4 +17,14 @@
 	
     - delete_operations (type: Set of ids)
 
-4. The dictionaries for the `create_operations` and `update_operations` should contain the full data of the products. The ids for the `delete_operation` should be the `id` columns of the products that should be deleted.
+4. The dictionaries for the `create_operations` and `update_operations` contains the full data of the products. The ids for the `delete_operation` is the `id` columns of the products that should be deleted.
+
+5. Test:
+```
+python test_main.py -v
+```
+
+6. Run:
+```
+python main.py path_to_before.csv path_to_after.csv
+```
