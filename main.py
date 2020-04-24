@@ -53,6 +53,43 @@ def get_delete_operations_list(before = [], after = []):
             row_before.append(d)
     return row_before
 
+def get_update_operations_list(before = [], after = []):
+    # Get list ids
+    before_copy = []
+    for row in before:
+        before_copy.append(row)
+
+    after_copy = []
+    for row in after:
+        after_copy.append(row)        
+
+    before_list = [row_before["id"] for row_before in before_copy]
+    after_list = [row_after["id"] for row_after in after_copy]
+
+    """ 
+    Get left and right lists that intersects by id 
+    """ 
+    # Before partitioning
+    before_partitioning = [
+        dict(row_before)
+        for row_before in before_copy
+        if row_before["id"] in after_list]
+
+    # After partitioning
+    after_partitioning = [
+        dict(row_after)
+        for row_after in after_copy
+        if row_after["id"] in before_list]
+
+    # Get difference (filds thas was updated) between lists
+    row_after_partitioning = [row_after_partitioning for row_after_partitioning in after_partitioning
+        if row_after_partitioning not in before_partitioning]
+    
+    # Return after product list that exists on before product list
+    # and shows differences between fields
+    return row_after_partitioning
+
+
 
 if __name__ == "__main__":
 
@@ -80,6 +117,16 @@ if __name__ == "__main__":
     delete_operations_list = get_delete_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
     print(f"Delete operations (type: Set of ids):\n{delete_operations_list}")
+
+    # Set file objects position to the beginning for the next data retrieval.
+    before_csv.seek(0)
+    after_csv.seek(0)
+
+    # Get update operations list
+    update_operations_list = get_update_operations_list(before_dict, after_dict)
+    # TODO: Implement channel integration
+    print(f"Update operations (type: List of dictionaries):\n{update_operations_list}")
+
 
 
     before_csv.close()
