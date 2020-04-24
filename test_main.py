@@ -39,6 +39,12 @@ class Test(unittest.TestCase):
             [{"id":"3"}, {"id":"4"}, {"id":"5"}])
         self.assertEqual(delete_operations_list, [{"id":"1"}, {"id":"2"}])
 
+    def test_get_delete_operations_list_ids(self):
+        delete_operations_list = main.get_delete_operations_list(
+            [{"id":"1", "title":"test 1"}, {"id":"2", "title":"test 2"}, {"id":"3", "title":"test 3"}],
+            [{"id":"3", "title":"test 3"}, {"id":"4", "title":"test 4"}, {"id":"5", "title":"test 5"}])
+        self.assertEqual(delete_operations_list, [{"id":"1"}, {"id":"2"}])
+
     def test_get_delete_operations_list_with_empty_input(self):
         delete_operations_list = main.get_delete_operations_list()
         self.assertEqual(delete_operations_list, [])

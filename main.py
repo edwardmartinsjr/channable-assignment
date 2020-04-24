@@ -43,10 +43,14 @@ This means we have to send a delete operation to the advertisement channel.
 """
 def get_delete_operations_list(before = [], after = []):
     row_after = [row_after["id"] for row_after in after]
-    row_before = [
-        dict(row_before)
-        for row_before in before
-        if row_before["id"] not in row_after]    
+
+    # Get only ids comparison
+    row_before = []
+    for row in before:
+        if row["id"] not in row_after:
+            d = {}
+            d["id"] = row["id"]
+            row_before.append(d)
     return row_before
 
 
