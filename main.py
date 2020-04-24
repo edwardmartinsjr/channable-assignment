@@ -107,7 +107,7 @@ if __name__ == "__main__":
     # Get create operations list
     create_operations_list = get_create_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
-    print(f"Create operations (type: List of dictionaries):\n{create_operations_list}")
+    print(f"Create operations (type: List of dictionaries):\n{create_operations_list}\n")
 
     # Set file objects position to the beginning for the next data retrieval.
     before_csv.seek(0)
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     # Get delete operations list
     delete_operations_list = get_delete_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
-    print(f"Delete operations (type: Set of ids):\n{delete_operations_list}")
+    print(f"Delete operations (type: Set of ids):\n{delete_operations_list}\n")
 
     # Set file objects position to the beginning for the next data retrieval.
     before_csv.seek(0)
@@ -125,11 +125,7 @@ if __name__ == "__main__":
     # Get update operations list
     update_operations_list = get_update_operations_list(before_dict, after_dict)
     # TODO: Implement channel integration
-    print(f"Update operations (type: List of dictionaries):\n{update_operations_list}")
-
-
+    print(f"Update operations (type: List of dictionaries):\n{update_operations_list}\n")
 
     before_csv.close()
     after_csv.close()
-
-
